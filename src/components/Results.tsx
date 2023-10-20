@@ -23,21 +23,24 @@ const Results = () => {
     dispatch(clearState);
   };
 
-  if(words.length === 0) return <Container maxWidth={"sm"}>
-    <Typography variant="h3" color={"primary"} m={"2rem 0"}>
-        Result
-      </Typography>
-      <Typography variant="h6" m={"1rem 0"} textAlign={"center"}>
-       No result to show.
-      </Typography>
-      <Button
-        onClick={resetHandler}
-        variant="contained"
-        sx={{ textAlign: "center", m: "1rem 0" }}
-      >
-        Reset
-      </Button>
-  </Container>
+  if (words.length === 0)
+    return (
+      <Container maxWidth={"sm"}>
+        <Typography variant="h3" color={"primary"} m={"2rem 0"}>
+          Result
+        </Typography>
+        <Typography variant="h6" m={"1rem 0"} textAlign={"center"}>
+          No result to show.
+        </Typography>
+        <Button
+          onClick={resetHandler}
+          variant="contained"
+          sx={{ textAlign: "center", m: "1rem 0" }}
+        >
+          Reset
+        </Button>
+      </Container>
+    );
 
   return (
     <Container maxWidth={"sm"}>
@@ -50,7 +53,7 @@ const Results = () => {
         of {words.length}
       </Typography>
       <Stack direction={"row"} justifyContent={"space-evenly"} mt={"1rem"}>
-        <Stack gap={"1rem"}>
+        <Stack gap={"0.5rem"}>
           <Typography variant="h5">Your Answer</Typography>
           {result.map((i, idx) => (
             <Typography key={idx}>
@@ -58,7 +61,7 @@ const Results = () => {
             </Typography>
           ))}
         </Stack>
-        <Stack gap={"1rem"}>
+        <Stack gap={"0.5rem"}>
           <Typography variant="h5">Correct Answer</Typography>
           {words.map((i, idx) => (
             <Typography key={idx}>
@@ -73,7 +76,7 @@ const Results = () => {
       <Typography
         variant="h5"
         color={percentage > 40 ? "green" : "red"}
-        mb={"2rem"}
+        mb={"1rem"}
       >
         {percentage > 40 ? "Pass" : "Fail"}
       </Typography>

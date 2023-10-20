@@ -1,20 +1,22 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { Container, Button, Typography, Stack } from "@mui/material";
-import { ArrowBack } from "@mui/icons-material";
-import { VolumeUp } from "@mui/icons-material";
-import { translateWords } from "../utils/features";
+import { ArrowBack, VolumeUp } from "@mui/icons-material";
+import { Button, Container, Stack, Typography } from "@mui/material";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { Loader } from ".";
 import {
   clearState,
   getWordsFailure,
   getWordsRequest,
   getWordsSuccess,
 } from "../redux/slices";
-import { Loader } from ".";
+import { textToAudio, translateWords } from "../utils/features";
 
 const Learning = () => {
   const [count, setCount] = useState<number>(0);
+  const [audioSrc, setAudioSrc] = useState<string>("");
+  const [audioDisable, setAudioDisable] = useState<boolean>(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const params = useSearchParams()[0].get("language") as LangType;
   const navigate = useNavigate();
@@ -27,6 +29,16 @@ const Learning = () => {
     setCount((prev) => prev + 1);
   };
 
+  const playAudio = async () => {
+    setAudioDisable(true);
+    const data = await textToAudio(words[count]?.word, params);
+    setAudioSrc(data);
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+    setAudioDisable(false);
+  };
+
   useEffect(() => {
     dispatch(getWordsRequest());
     translateWords(params || "hi")
@@ -34,7 +46,7 @@ const Learning = () => {
       .catch((err) => dispatch(getWordsFailure(err)));
 
     if (error) {
-      alert(error);
+      navigate("/error")
       dispatch(clearState());
     }
   }, [dispatch]);
@@ -43,6 +55,7 @@ const Learning = () => {
 
   return (
     <Container maxWidth={"sm"} sx={{ p: "1rem" }}>
+      {audioSrc && <audio ref={audioRef} src={audioSrc} />}
       <Button
         onClick={
           count === 0 ? () => navigate("/") : () => setCount((prev) => prev - 1)
@@ -60,7 +73,11 @@ const Learning = () => {
         <Typography variant="h4" color={"blue"}>
           : {words[count]?.meaning}
         </Typography>
-        <Button sx={{ borderRadius: "50%" }}>
+        <Button
+          onClick={playAudio}
+          sx={{ borderRadius: "50%" }}
+          disabled={audioDisable}
+        >
           <VolumeUp />
         </Button>
       </Stack>
@@ -68,9 +85,11 @@ const Learning = () => {
         variant="contained"
         fullWidth
         sx={{ margin: "2rem 0" }}
-        onClick={count === words.length-1 ? () => navigate("/quiz") : nextHandler}
+        onClick={
+          count === words.length - 1 ? () => navigate("/quiz") : nextHandler
+        }
       >
-        {count === words.length-1 ? "Take Test" : "Next"}
+        {count === words.length - 1 ? "Take Test" : "Next"}
       </Button>
     </Container>
   );

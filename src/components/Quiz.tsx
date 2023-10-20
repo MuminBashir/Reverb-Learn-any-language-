@@ -1,18 +1,17 @@
-import { useState, useEffect } from "react";
 import {
-  Container,
-  Typography,
   Button,
+  Container,
   FormControl,
-  FormLabel,
   FormControlLabel,
-  RadioGroup,
+  FormLabel,
   Radio,
+  RadioGroup,
   Stack,
+  Typography,
 } from "@mui/material";
-import { VolumeUp } from "@mui/icons-material";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 import { saveResult } from "../redux/slices";
 
 const Quiz = () => {
@@ -45,9 +44,6 @@ const Quiz = () => {
         <Typography variant="h4">
           {count + 1} - {words[count]?.word}
         </Typography>
-        <Button sx={{ borderRadius: "50%" }}>
-          <VolumeUp />
-        </Button>
       </Stack>
 
       <FormControl>

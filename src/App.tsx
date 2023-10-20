@@ -7,6 +7,7 @@ const Learning = lazy(() => import("./components/Learning"));
 const Quiz = lazy(() => import("./components/Quiz"));
 const Results = lazy(() => import("./components/Results"));
 const About = lazy(() => import("./components/About"));
+const Error = lazy(() => import("./components/Error"));
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/learning" element={<Learning />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/results" element={<Results />} />
+          <Route path="/error" element={<Error />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

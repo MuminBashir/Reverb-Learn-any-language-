@@ -5,3 +5,4 @@ export { default as Quiz } from "./Quiz";
 export { default as Results } from "./Results";
 export { default as Loader } from "./Loader";
 export { default as About } from "./About";
+export { default as Error } from "./Error";
