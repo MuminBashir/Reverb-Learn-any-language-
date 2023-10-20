@@ -6,7 +6,7 @@ const Loader = () => {
       display="flex"
       flexDirection="column"
       alignItems="center"
-      height={"90vh"}
+      height={"79.3vh"}
       justifyContent={"center"}
     >
       <CircularProgress color="primary" size={60} thickness={5} />

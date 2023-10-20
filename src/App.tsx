@@ -8,6 +8,7 @@ const Quiz = lazy(() => import("./components/Quiz"));
 const Results = lazy(() => import("./components/Results"));
 const About = lazy(() => import("./components/About"));
 const Error = lazy(() => import("./components/Error"));
+const Footer = lazy(() => import("./components/Footer"));
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/error" element={<Error />} />
         </Routes>
       </Suspense>
+      <Footer />
     </BrowserRouter>
   );
 };

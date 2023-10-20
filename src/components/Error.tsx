@@ -10,7 +10,7 @@ const Error = () => {
       display="flex"
       justifyContent="center"
       alignItems="center"
-      height="90vh"
+      height="79.3vh"
     >
       <Paper elevation={3} style={{ padding: "20px", textAlign: "center" }}>
         <ErrorOutlineIcon color="error" sx={{ fontSize: 80 }} />

@@ -6,3 +6,4 @@ export { default as Results } from "./Results";
 export { default as Loader } from "./Loader";
 export { default as About } from "./About";
 export { default as Error } from "./Error";
+export { default as Footer } from "./Footer";

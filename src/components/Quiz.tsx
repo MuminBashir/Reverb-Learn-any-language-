@@ -37,7 +37,7 @@ const Quiz = () => {
   }, [result]);
 
   return (
-    <Container maxWidth="sm" sx={{ p: "1rem" }}>
+    <Container maxWidth="sm" sx={{ p: "1rem", height: "79.3vh" }}>
       <Typography m={"2rem 0"}>Quiz</Typography>
 
       <Stack direction={"row"} spacing={"1rem"}>

@@ -33,7 +33,7 @@ const Home = () => {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" sx={{height: "79.3vh"}}>
       <Typography
         variant="h5"
         p={"2rem"}

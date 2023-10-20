@@ -2,7 +2,7 @@ import { Container, Grid, Paper, Typography } from "@mui/material";
 
 const About = () => {
   return (
-    <Container>
+    <Container sx={{m: "2rem"}}>
       <Paper
         elevation={3}
         style={{ padding: "20px", margin: "20px 0"}}

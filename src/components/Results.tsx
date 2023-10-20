@@ -83,7 +83,7 @@ const Results = () => {
       <Button
         onClick={resetHandler}
         variant="contained"
-        sx={{ textAlign: "center", mb: "1rem" }}
+        sx={{ textAlign: "center", mb: "2rem" }}
       >
         Reset
       </Button>

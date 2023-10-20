@@ -46,7 +46,7 @@ const Learning = () => {
       .catch((err) => dispatch(getWordsFailure(err)));
 
     if (error) {
-      navigate("/error")
+      navigate("/error");
       dispatch(clearState());
     }
   }, [dispatch]);
@@ -54,7 +54,7 @@ const Learning = () => {
   if (loading) return <Loader />;
 
   return (
-    <Container maxWidth={"sm"} sx={{ p: "1rem" }}>
+    <Container maxWidth={"sm"} sx={{ p: "2rem", height: "79.3vh" }}>
       {audioSrc && <audio ref={audioRef} src={audioSrc} />}
       <Button
         onClick={
