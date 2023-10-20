@@ -25,7 +25,7 @@ const Results = () => {
 
   if (words.length === 0)
     return (
-      <Container maxWidth={"sm"}>
+      <Container maxWidth={"sm"} sx={{ height: "74.65vh" }}>
         <Typography variant="h3" color={"primary"} m={"2rem 0"}>
           Result
         </Typography>

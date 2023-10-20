@@ -45,7 +45,7 @@ const Home = () => {
 
       <Stack
         direction={"row"}
-        spacing={"2rem"}
+        spacing={"1.9rem"}
         p={"2rem"}
         justifyContent={"center"}
         alignItems={"center"}
